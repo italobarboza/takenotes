@@ -14,16 +14,19 @@ Using [Composer](https://getcomposer.org/), run the command ``composer install``
 
 ### 3. Configure Project
 Go to ``PROJECT_DIRECTORY\.env`` (if this file doesn't exist, simply rename or duplicate ``PROJECT_DIRECTORY\.env.example`` to .env) file and configure **at least** the following variables:
-``DB_HOST=your_database_host
+```
+DB_HOST=your_database_host
 DB_DATABASE=your_database_name
 DB_USERNAME=your_database_username
 DB_PASSWORD=your_database_password
+
 MAIL_DRIVER=your_email_driver
 MAIL_HOST=your_email_host
 MAIL_PORT=your_email_port
 MAIL_USERNAME=your_email_username
 MAIL_PASSWORD=your_email_password
-MAIL_ENCRYPTION=your_email_encryption``
+MAIL_ENCRYPTION=your_email_encryption
+```
 
 ### 4. Import Database
 Open a terminal window, go to ``PROJECT_DIRECTORY`` and run the command ``php artisan migrate``
