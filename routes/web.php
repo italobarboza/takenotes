@@ -20,7 +20,7 @@ Auth::routes();
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
 Route::prefix('notes')->group(function () {
-    Route::get('view', 'NotesController@view')->name('notes.view');
-    Route::get('new', 'NotesController@new')->name('notes.new');
-    Route::get('edit', 'NotesController@edit')->name('notes.edit');
+    Route::get('view', 'Notes\NotesController@view')->name('notes.view');
+    Route::get('new', 'Notes\NotesController@new')->name('notes.new');
+    Route::get('edit', 'Notes\NotesController@edit')->name('notes.edit');
 });

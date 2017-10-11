@@ -10,8 +10,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/highlight.default.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/notice.css') }}" rel="stylesheet">
+@yield('style')
 </head>
 <body>
     <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
@@ -51,18 +50,11 @@
             <span>&copy; 2017</span>
         </div>
     </footer>
-
     <!-- Scripts -->
-    <script src="{{ asset('js/highlight.pack.js') }}"></script>
-    <script>
-        hljs.initHighlightingOnLoad();
-    </script>
     <script src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
     <script src="{{ asset('js/popper.js') }}"></script>
     <script src="{{ asset('js/tooltip.js') }}"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('js/newnote.js') }}"></script>
-    <script src="{{ asset('js/copytoclipboard.js') }}"></script>
-    <script src="{{ asset('js/jquery.notice.js') }}"></script>
+@yield('script')
 </body>
 </html>

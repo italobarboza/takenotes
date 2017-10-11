@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('script')
+    <script src="{{ asset('js/newnote.js') }}"></script>
+@endsection
 @section('content')
 <div class="clearfix">
     <h3 class="float-left">Edit Note</h3>

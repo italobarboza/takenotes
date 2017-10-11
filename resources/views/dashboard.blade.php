@@ -1,4 +1,12 @@
 @extends('layouts.app')
+@section('style')
+    <link href="{{ asset('css/highlight.default.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/notice.css') }}" rel="stylesheet">
+@endsection
+@section('script')
+    <script src="{{ asset('js/copytoclipboard.js') }}"></script>
+    <script src="{{ asset('js/jquery.notice.js') }}"></script>
+@endsection
 @section('content')
 @if (session('status'))
     <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -29,7 +37,7 @@
             <td>
                 <a href="{{ route('notes.view') }}" class="badge badge-light">View</a>
                 <a href="{{ route('notes.edit') }}" class="badge badge-primary">Edit</a>
-                <a href="#" data-clipboard-text="http://takenotes.italobarboza.com.br/note/xGhP1337" class="badge badge-info getLink">Get Link</a>
+                <a href="#" data-clipboard-text="{{ config('app.url') }}/note/xGhP1337" class="badge badge-info getLink">Get Link</a>
                 <a href="#" class="badge badge-danger">Delete</a>
             </td>
         </tr>
@@ -40,7 +48,7 @@
             <td>
                 <a href="{{ route('notes.view') }}" class="badge badge-light">View</a>
                 <a href="{{ route('notes.edit') }}" class="badge badge-primary">Edit</a>
-                <a href="#" data-clipboard-text="http://takenotes.italobarboza.com.br/note/xGhP1337" class="badge badge-info getLink">Get Link</a>
+                <a href="#" data-clipboard-text="{{ config('app.url') }}/note/xGhP1337" class="badge badge-info getLink">Get Link</a>
                 <a href="#" class="badge badge-danger">Delete</a>
             </td>
         </tr>
@@ -51,7 +59,7 @@
             <td>
                 <a href="{{ route('notes.view') }}" class="badge badge-light">View</a>
                 <a href="{{ route('notes.edit') }}" class="badge badge-primary">Edit</a>
-                <a href="#" data-clipboard-text="http://takenotes.italobarboza.com.br/note/xGhP1337" class="badge badge-info getLink">Get Link</a>
+                <a href="#" data-clipboard-text="{{ config('app.url') }}/note/xGhP1337" class="badge badge-info getLink">Get Link</a>
                 <a href="#" class="badge badge-danger">Delete</a>
             </td>
         </tr>
@@ -62,7 +70,7 @@
             <td>
                 <a href="{{ route('notes.view') }}" class="badge badge-light">View</a>
                 <a href="{{ route('notes.edit') }}" class="badge badge-primary">Edit</a>
-                <a href="#" data-clipboard-text="http://takenotes.italobarboza.com.br/note/xGhP1337" class="badge badge-info getLink">Get Link</a>
+                <a href="#" data-clipboard-text="{{ config('app.url') }}/note/xGhP1337" class="badge badge-info getLink">Get Link</a>
                 <a href="#" class="badge badge-danger">Delete</a>
             </td>
         </tr>
@@ -73,7 +81,7 @@
             <td>
                 <a href="{{ route('notes.view') }}" class="badge badge-light">View</a>
                 <a href="{{ route('notes.edit') }}" class="badge badge-primary">Edit</a>
-                <a href="#" data-clipboard-text="http://takenotes.italobarboza.com.br/note/xGhP1337" class="badge badge-info getLink">Get Link</a>
+                <a href="#" data-clipboard-text="{{ config('app.url') }}/note/xGhP1337" class="badge badge-info getLink">Get Link</a>
                 <a href="#" class="badge badge-danger">Delete</a>
             </td>
         </tr>
@@ -84,7 +92,7 @@
             <td>
                 <a href="{{ route('notes.view') }}" class="badge badge-light">View</a>
                 <a href="{{ route('notes.edit') }}" class="badge badge-primary">Edit</a>
-                <a href="#" data-clipboard-text="http://takenotes.italobarboza.com.br/note/xGhP1337" class="badge badge-info getLink">Get Link</a>
+                <a href="#" data-clipboard-text="{{ config('app.url') }}/note/xGhP1337" class="badge badge-info getLink">Get Link</a>
                 <a href="#" class="badge badge-danger">Delete</a>
             </td>
         </tr>
@@ -95,7 +103,7 @@
             <td>
                 <a href="{{ route('notes.view') }}" class="badge badge-light">View</a>
                 <a href="{{ route('notes.edit') }}" class="badge badge-primary">Edit</a>
-                <a href="#" data-clipboard-text="http://takenotes.italobarboza.com.br/note/xGhP1337" class="badge badge-info getLink">Get Link</a>
+                <a href="#" data-clipboard-text="{{ config('app.url') }}/note/xGhP1337" class="badge badge-info getLink">Get Link</a>
                 <a href="#" class="badge badge-danger">Delete</a>
             </td>
         </tr>
@@ -106,7 +114,7 @@
             <td>
                 <a href="{{ route('notes.view') }}" class="badge badge-light">View</a>
                 <a href="{{ route('notes.edit') }}" class="badge badge-primary">Edit</a>
-                <a href="#" data-clipboard-text="http://takenotes.italobarboza.com.br/note/xGhP1337" class="badge badge-info getLink">Get Link</a>
+                <a href="#" data-clipboard-text="{{ config('app.url') }}/note/xGhP1337" class="badge badge-info getLink">Get Link</a>
                 <a href="#" class="badge badge-danger">Delete</a>
             </td>
         </tr>
@@ -117,7 +125,7 @@
             <td>
                 <a href="{{ route('notes.view') }}" class="badge badge-light">View</a>
                 <a href="{{ route('notes.edit') }}" class="badge badge-primary">Edit</a>
-                <a href="#" data-clipboard-text="http://takenotes.italobarboza.com.br/note/xGhP1337" class="badge badge-info getLink">Get Link</a>
+                <a href="#" data-clipboard-text="{{ config('app.url') }}/note/xGhP1337" class="badge badge-info getLink">Get Link</a>
                 <a href="#" class="badge badge-danger">Delete</a>
             </td>
         </tr>
@@ -128,7 +136,7 @@
             <td>
                 <a href="{{ route('notes.view') }}" class="badge badge-light">View</a>
                 <a href="{{ route('notes.edit') }}" class="badge badge-primary">Edit</a>
-                <a href="#" data-clipboard-text="http://takenotes.italobarboza.com.br/note/xGhP1337" class="badge badge-info getLink">Get Link</a>
+                <a href="#" data-clipboard-text="{{ config('app.url') }}/note/xGhP1337" class="badge badge-info getLink">Get Link</a>
                 <a href="#" class="badge badge-danger">Delete</a>
             </td>
         </tr>
@@ -139,7 +147,7 @@
             <td>
                 <a href="{{ route('notes.view') }}" class="badge badge-light">View</a>
                 <a href="{{ route('notes.edit') }}" class="badge badge-primary">Edit</a>
-                <a href="#" data-clipboard-text="http://takenotes.italobarboza.com.br/note/xGhP1337" class="badge badge-info getLink">Get Link</a>
+                <a href="#" data-clipboard-text="{{ config('app.url') }}/note/xGhP1337" class="badge badge-info getLink">Get Link</a>
                 <a href="#" class="badge badge-danger">Delete</a>
             </td>
         </tr>
@@ -150,7 +158,7 @@
             <td>
                 <a href="{{ route('notes.view') }}" class="badge badge-light">View</a>
                 <a href="{{ route('notes.edit') }}" class="badge badge-primary">Edit</a>
-                <a href="#" data-clipboard-text="http://takenotes.italobarboza.com.br/note/xGhP1337" class="badge badge-info getLink">Get Link</a>
+                <a href="#" data-clipboard-text="{{ config('app.url') }}/note/xGhP1337" class="badge badge-info getLink">Get Link</a>
                 <a href="#" class="badge badge-danger">Delete</a>
             </td>
         </tr>
@@ -161,7 +169,7 @@
             <td>
                 <a href="{{ route('notes.view') }}" class="badge badge-light">View</a>
                 <a href="{{ route('notes.edit') }}" class="badge badge-primary">Edit</a>
-                <a href="#" data-clipboard-text="http://takenotes.italobarboza.com.br/note/xGhP1337" class="badge badge-info getLink">Get Link</a>
+                <a href="#" data-clipboard-text="{{ config('app.url') }}/note/xGhP1337" class="badge badge-info getLink">Get Link</a>
                 <a href="#" class="badge badge-danger">Delete</a>
             </td>
         </tr>
@@ -172,7 +180,7 @@
             <td>
                 <a href="{{ route('notes.view') }}" class="badge badge-light">View</a>
                 <a href="{{ route('notes.edit') }}" class="badge badge-primary">Edit</a>
-                <a href="#" data-clipboard-text="http://takenotes.italobarboza.com.br/note/xGhP1337" class="badge badge-info getLink">Get Link</a>
+                <a href="#" data-clipboard-text="{{ config('app.url') }}/note/xGhP1337" class="badge badge-info getLink">Get Link</a>
                 <a href="#" class="badge badge-danger">Delete</a>
             </td>
         </tr>
@@ -183,7 +191,7 @@
             <td>
                 <a href="{{ route('notes.view') }}" class="badge badge-light">View</a>
                 <a href="{{ route('notes.edit') }}" class="badge badge-primary">Edit</a>
-                <a href="#" data-clipboard-text="http://takenotes.italobarboza.com.br/note/xGhP1337" class="badge badge-info getLink">Get Link</a>
+                <a href="#" data-clipboard-text="{{ config('app.url') }}/note/xGhP1337" class="badge badge-info getLink">Get Link</a>
                 <a href="#" class="badge badge-danger">Delete</a>
             </td>
         </tr>
@@ -194,7 +202,7 @@
             <td>
                 <a href="{{ route('notes.view') }}" class="badge badge-light">View</a>
                 <a href="{{ route('notes.edit') }}" class="badge badge-primary">Edit</a>
-                <a href="#" data-clipboard-text="http://takenotes.italobarboza.com.br/note/xGhP1337" class="badge badge-info getLink">Get Link</a>
+                <a href="#" data-clipboard-text="{{ config('app.url') }}/note/xGhP1337" class="badge badge-info getLink">Get Link</a>
                 <a href="#" class="badge badge-danger">Delete</a>
             </td>
         </tr>
@@ -205,7 +213,7 @@
             <td>
                 <a href="{{ route('notes.view') }}" class="badge badge-light">View</a>
                 <a href="{{ route('notes.edit') }}" class="badge badge-primary">Edit</a>
-                <a href="#" data-clipboard-text="http://takenotes.italobarboza.com.br/note/xGhP1337" class="badge badge-info getLink">Get Link</a>
+                <a href="#" data-clipboard-text="{{ config('app.url') }}/note/xGhP1337" class="badge badge-info getLink">Get Link</a>
                 <a href="#" class="badge badge-danger">Delete</a>
             </td>
         </tr>
@@ -216,7 +224,7 @@
             <td>
                 <a href="{{ route('notes.view') }}" class="badge badge-light">View</a>
                 <a href="{{ route('notes.edit') }}" class="badge badge-primary">Edit</a>
-                <a href="#" data-clipboard-text="http://takenotes.italobarboza.com.br/note/xGhP1337" class="badge badge-info getLink">Get Link</a>
+                <a href="#" data-clipboard-text="{{ config('app.url') }}/note/xGhP1337" class="badge badge-info getLink">Get Link</a>
                 <a href="#" class="badge badge-danger">Delete</a>
             </td>
         </tr>
@@ -227,7 +235,7 @@
             <td>
                 <a href="{{ route('notes.view') }}" class="badge badge-light">View</a>
                 <a href="{{ route('notes.edit') }}" class="badge badge-primary">Edit</a>
-                <a href="#" data-clipboard-text="http://takenotes.italobarboza.com.br/note/xGhP1337" class="badge badge-info getLink">Get Link</a>
+                <a href="#" data-clipboard-text="{{ config('app.url') }}/note/xGhP1337" class="badge badge-info getLink">Get Link</a>
                 <a href="#" class="badge badge-danger">Delete</a>
             </td>
         </tr>

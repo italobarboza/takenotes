@@ -1,4 +1,13 @@
 @extends('layouts.app')
+@section('style')
+    <link href="{{ asset('css/highlight.default.css') }}" rel="stylesheet">
+@endsection
+@section('script')
+  <script src="{{ asset('js/highlight.pack.js') }}"></script>
+  <script>
+      hljs.initHighlightingOnLoad();
+  </script>
+@endsection
 @section('content')
 <div class="clearfix">
             <h3 class="float-left">Your Note</h3>
