@@ -17,4 +17,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+
+Route::prefix('notes')->group(function () {
+    Route::get('view', 'NotesController@view')->name('notes.view');
+    Route::get('new', 'NotesController@new')->name('notes.new');
+    Route::get('edit', 'NotesController@edit')->name('notes.edit');
+});

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class NotesController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -16,13 +16,19 @@ class HomeController extends Controller
         $this->middleware('auth');
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function view()
     {
-        return view('home');
+        return view('notes.view');
     }
+
+    public function new()
+    {
+        return view('notes.new');
+    }
+
+    public function edit()
+    {
+        return view('notes.edit');
+    }
+
 }
