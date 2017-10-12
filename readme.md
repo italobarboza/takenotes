@@ -29,7 +29,14 @@ MAIL_ENCRYPTION=your_email_encryption
 ```
 
 ### 4. Import Database
-Open a terminal window, go to ``PROJECT_DIRECTORY`` and run the command ``php artisan migrate``
+Open a terminal window, go to ``PROJECT_DIRECTORY`` and run the command ``php artisan migrate --seed``
+
+#### 4.1 Demo user
+You can use the following user after running the migrate command
+```
+User: user@example.com
+Password: password
+```
 
 ### 5. Run
 Open a terminal window, go to ``PROJECT_DIRECTORY`` and run the command ``php artisan serve``

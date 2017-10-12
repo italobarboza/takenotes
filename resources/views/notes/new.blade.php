@@ -8,7 +8,8 @@
     <a href="{{ route('dashboard') }}" class="small float-right text-muted justify-content-end">Back to Dashboard</a>
 </div>
 <hr>
-<form method="GET" action="{{route('notes.new')}}">
+<form method="POST" action="{{route('notes.store')}}">
+    {{ csrf_field() }}
     <div class="form-row">
         <div class="col-md-6 mb-3">
             <label for="inputTitle">Title</label>
@@ -17,11 +18,11 @@
         <div class="col-md-6 mb-3">
             <label for="inputCategory">Category</label>
             <select id="inputCategory" name="inputCategory" class="form-control">
-                <option>PHP</option>
-                <option>SQL</option>
-                <option>Delphi</option>
-                <option>CSS</option>
-                <option>JS</option>
+                <option value="1">PHP</option>
+                <option value="2">SQL</option>
+                <option value="3">Delphi</option>
+                <option value="4">CSS</option>
+                <option value="5">JS</option>
             </select>
         </div>
     </div>

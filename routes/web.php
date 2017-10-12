@@ -23,4 +23,5 @@ Route::prefix('notes')->group(function () {
     Route::get('view', 'Notes\NotesController@view')->name('notes.view');
     Route::get('new', 'Notes\NotesController@new')->name('notes.new');
     Route::get('edit', 'Notes\NotesController@edit')->name('notes.edit');
+    Route::post('/', 'Notes\NotesController@store')->name('notes.store');
 });
