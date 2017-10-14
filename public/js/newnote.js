@@ -1,9 +1,10 @@
 $(document).ready(function() {
-    $('#inputAvaliableForOthers').on('change', function() {
+    $('#share').on('change', function() {
         if ($(this).is(':checked')) {
-            $('#inputNoteURL').removeAttr('disabled');
+            $('#url').removeAttr('disabled');
         } else {
-            $('#inputNoteURL').attr('disabled', 'disabled');
+            $('#url').attr('disabled', 'disabled');
         }
     });
+    $('#share').change();
 });

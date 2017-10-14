@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Note;
+use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
@@ -23,6 +25,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('dashboard');
+        $notes = Note::getNotesFromUser(Auth::id());
+        return view('dashboard', compact('notes'));
     }
 }
