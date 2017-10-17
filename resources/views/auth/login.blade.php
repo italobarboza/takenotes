@@ -6,6 +6,12 @@
         <div class="card-body text-dark">
             <form method="POST" action="{{ route('login') }}">
                 {{ csrf_field() }}
+                @if (session()->has('verifyaccount'))
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    {{ session('verifyaccount')}}
+                </div>
+                @endif
                 <div class="form-group row">
                     <label for="email" class="col-sm-4 col-form-label">Login</label>
                     <div class="col-sm-6">

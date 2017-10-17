@@ -30,3 +30,7 @@ Route::prefix('notes')->group(function () {
     Route::post('update/{id}', 'Notes\NotesController@update')->name('notes.update');
     Route::delete('destroy/{id}', 'Notes\NotesController@destroy')->name('notes.destroy');
 });
+
+Route::prefix('account')->group(function () {
+    Route::get('verify/{email}/{verifyToken}', 'Auth\RegisterController@accountVerifyEmail')->name('accountVerifyEmail');
+});
