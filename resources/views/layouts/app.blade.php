@@ -30,7 +30,7 @@
                         </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="menuNavbarProfile">
                         <a class="dropdown-item" href="{{ route('dashboard') }}">Dashboard</a>
-                        <a class="dropdown-item" href="./profile.html">Profile</a>
+                        <a class="dropdown-item" href="{{ route('account.profile') }}">Profile</a>
                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Sign out</a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             {{ csrf_field() }}

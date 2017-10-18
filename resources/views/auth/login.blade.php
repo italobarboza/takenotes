@@ -15,9 +15,9 @@
                 <div class="form-group row">
                     <label for="email" class="col-sm-4 col-form-label">Login</label>
                     <div class="col-sm-6">
-                        <input type="email" class="form-control" id="email" name="email" placeholder="Login" value="{{ old('email') }}" required autofocus>
+                        <input type="email" class="form-control @if ($errors->has('email')) is-invalid @endif" id="email" name="email" placeholder="Login" value="{{ old('email') }}" required autofocus>
                         @if ($errors->has('email'))
-                            <span class="help-block">
+                            <span class="invalid-feedback">
                                 <strong>{{ $errors->first('email') }}</strong>
                             </span>
                         @endif
@@ -26,9 +26,9 @@
                 <div class="form-group row">
                     <label for="password" class="col-sm-4 col-form-label">Password</label>
                     <div class="col-sm-6">
-                        <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+                        <input type="password" class="form-control @if ($errors->has('password')) is-invalid @endif" id="password" name="password" placeholder="Password" required>
                         @if ($errors->has('password'))
-                            <span class="help-block">
+                            <span class="invalid-feedback">
                                 <strong>{{ $errors->first('password') }}</strong>
                             </span>
                         @endif

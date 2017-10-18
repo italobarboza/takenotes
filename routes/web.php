@@ -33,4 +33,6 @@ Route::prefix('notes')->group(function () {
 
 Route::prefix('account')->group(function () {
     Route::get('verify/{email}/{verifyToken}', 'Auth\RegisterController@accountVerifyEmail')->name('accountVerifyEmail');
+    Route::get('profile', 'AccountController@profile')->name('account.profile');
+    Route::post('profile', 'AccountController@saveProfile')->name('account.saveprofile');
 });
