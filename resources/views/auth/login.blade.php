@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('style')
+    <link href="{{ asset('css/social.css') }}" rel="stylesheet">
+@endsection
 @section('content')
 <div class="col-sm-9 mx-auto">
     <div class="card card-login border-dark">
@@ -43,7 +46,17 @@
                 </div>
                 <div class="form-group row justify-content-end d-flex align-items-center">
                     <div class="col-sm-8">
-                        <button type="submit" class="btn btn-primary">Sign in</button> <a href="{{ route('password.request') }}" class="linkMarginLeft">Forgot Your Password?</a>
+                        <button type="submit" class="btn btn-primary">Sign in</button>
+                        <!--
+                        @if (env('FACEBOOK_CLIENT_ID'))
+                        <button type="submit" class="btn btn-primary">Facebook</button>
+                        @endif
+                        @if (env('TWITTER_CLIENT_ID'))
+                        <button type="submit" class="btn btn-primary">Twitter</button>
+                        @endif
+                        -->
+                        <a href="{{ route('password.request') }}" class="linkMarginLeft">Forgot Your Password?</a>
+                        <!-- <a href="#" class="btn btn-social btn-facebook"><i class="fa fa-facebook fa-fw"></i> Sign in with Facebook</a> -->
                     </div>
                 </div>
             </form>

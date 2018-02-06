@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Socialite;
 
 class LoginController extends Controller
 {
@@ -39,11 +40,94 @@ class LoginController extends Controller
     }
 
     protected function credentials(Request $request) {
-        //return $request->only($this->username(), 'password');
         return [
             'email' => $request->{$this->username()},
             'password' => $request->password,
             'status' => 1
         ];
+    }
+
+    /**
+     * Redirect the user to the Facebook authentication page.
+     *
+     * @return Response
+     */
+    public function redirectToProviderFacebook() {
+        if (env('FACEBOOK_CLIENT_ID')) {
+            return Socialite::driver('facebook')->redirect();
+        } else {
+            return view('message', ['message' => 'Access not allowed']);
+        }
+    }
+
+    /**
+     * Obtain the user information from Facebook.
+     *
+     * @return Response
+     */
+    public function handleProviderCallbackFacebook() {
+        if (env('FACEBOOK_CLIENT_ID')) {
+            $user = Socialite::driver('facebook')->user();
+
+        // $user->token;
+        } else {
+            return view('message', ['message' => 'Access not allowed']);
+        }
+    }
+
+    /**
+     * Redirect the user to the Twitter authentication page.
+     *
+     * @return Response
+     */
+    public function redirectToProviderTwitter() {
+        if (env('TWITTER_CLIENT_ID')) {
+            return Socialite::driver('twitter')->redirect();
+        } else {
+            return view('message', ['message' => 'Access not allowed']);
+        }
+    }
+
+    /**
+     * Obtain the user information from Twitter.
+     *
+     * @return Response
+     */
+    public function handleProviderCallbackTwitter() {
+        if (env('TWITTER_CLIENT_ID')) {
+            $user = Socialite::driver('twitter')->user();
+
+        // $user->token;
+        } else {
+            return view('message', ['message' => 'Access not allowed']);
+        }
+    }
+
+    /**
+     * Redirect the user to the Google authentication page.
+     *
+     * @return Response
+     */
+    public function redirectToProviderGoogle() {
+        if (env('GOOGLE_CLIENT_ID')) {
+            return Socialite::driver('google')->redirect();
+        } else {
+            return view('message', ['message' => 'Access not allowed']);
+        }
+    }
+
+    /**
+     * Obtain the user information from Google.
+     *
+     * @return Response
+     */
+    public function handleProviderCallbackGoogle() {
+        if (env('GOOGLE_CLIENT_ID')) {
+            $user = Socialite::driver('google')->user();
+
+        // $user->token;
+        } else {
+            return view('message', ['message' => 'Access not allowed']);
+        }
     }
 }

@@ -14,13 +14,13 @@
         <a href="{{ route('dashboard') }}" class="small float-right text-muted justify-content-end">Back to Dashboard</a>
     </div>
     <hr>
-    <p>Category: <strong>{{$note->category->name}}</strong></p>
-    <pre><code class="{{$note->category->highlight}}">{{$note->note}}</code></pre>
     <p>
         <form method="POST" action="{{route('notes.destroy', $note->id)}}">
             {{ csrf_field() }}
             {{ method_field('DELETE') }}
-            <button type="submit" class="btn btn-danger">Permanently Delete</button>
+            Category: <strong>{{$note->category->name}}</strong>
+            <button type="submit" class="btn btn-danger float-right">Permanently Delete</button>
         </form>
     </p>
+    <pre><code class="{{$note->category->highlight}}">{{$note->note}}</code></pre>
 @endsection

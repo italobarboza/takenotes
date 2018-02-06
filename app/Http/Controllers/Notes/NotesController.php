@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Note;
 use App\Category;
-use Illuminate\Validation\Rule;
+//use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
 use Validator;
 
