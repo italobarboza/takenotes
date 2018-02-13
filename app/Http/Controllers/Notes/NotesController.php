@@ -9,7 +9,6 @@ use App\Category;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
 use Validator;
-use Illuminate\Http\RedirectResponse;
 
 class NotesController extends Controller
 {
