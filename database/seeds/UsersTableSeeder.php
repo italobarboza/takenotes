@@ -15,6 +15,8 @@ class UsersTableSeeder extends Seeder
             'name' => 'Test User',
             'email' => 'user@example.com',
             'password' => bcrypt('password'),
+            'status' => 1,
+            'verifyToken' => NULL
         ]);
     }
 }

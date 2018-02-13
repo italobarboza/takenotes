@@ -15,6 +15,6 @@ class Note extends Model
     }
 
     public static function getSharedNote($noteUrl) {
-        return Note::where('url', $noteUrl)->get()->first();
+        return Note::where('url', $noteUrl)->first();
     }
 }

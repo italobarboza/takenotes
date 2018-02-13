@@ -4,7 +4,7 @@ Take Notes it's a web project proudly created using [Laravel](https://github.com
 
 ## Installation Steps
 ### 0. Requirements
-As we are using Laravel 5.5 in this project, see at their [oficial documentation](https://laravel.com/docs/5.5/installation) if you have all the requirements installed.
+As we are using Laravel 5.6 in this project, see at their [oficial documentation](https://laravel.com/docs/5.6/installation) if you have all the requirements installed.
 
 ### 1. Get a copy of the project
 You can clone this project or simply download the source code and put it in any directory.
@@ -26,6 +26,15 @@ MAIL_PORT=your_email_port
 MAIL_USERNAME=your_email_username
 MAIL_PASSWORD=your_email_password
 MAIL_ENCRYPTION=your_email_encryption
+
+FACEBOOK_CLIENT_ID=your_facebook_app_id
+FACEBOOK_CLIENT_SECRET=your_facebook_app_secret
+
+TWITTER_CLIENT_ID=your_twitter_app_id
+TWITTER_CLIENT_SECRET=your_twitter_app_secret
+
+GOOGLE_CLIENT_ID=your_google_app_id
+GOOGLE_CLIENT_SECRET=your_google_app_secret
 ```
 
 ### 4. Import Database

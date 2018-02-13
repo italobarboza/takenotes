@@ -13,7 +13,7 @@ use Validator;
 class NotesController extends Controller
 {
     public function __construct() {
-        
+
     }
 
     public function show($id) {
@@ -78,19 +78,13 @@ class NotesController extends Controller
             'url.required' => 'The Note URL field is required when "Avaliable for others" is enabled',
             'category.min' => 'The :attribute field is required'
         ];
-
         $validator = Validator::make($request->all(), [
-            // 'title' => ['required|max:255',
-            //     Rule::unique('notes')->where(function ($query) {
-            //         return $query->where('user_id', Auth::id());
-            //     })
-            // ],
-            'title' => 'required|max:255',
+            'title' => 'required|max:255|unique:notes,title,' . ($id ? $id : 'NULL'). ',id,user_id,' . Auth::id(),
             'category' => 'required|integer|min:1',
             'note' => 'required'
         ], $messages);
 
-        $validator->sometimes('url', 'required|max:60', function ($note) {
+        $validator->sometimes('url', 'required|max:60|unique:notes,url,' . ($id ? $id : 'NULL'). ',id', function ($note) {
             return $note->share <> 0;
         });
 
@@ -118,14 +112,14 @@ class NotesController extends Controller
     public function share($url = null) {
         if ((!is_null($url)) and (!empty($url))) {
             $note = Note::getSharedNote($url);
-            if ((count($note) > 0) && ($note->share <> 0)) {
+            if (($note) && ($note->share <> 0)) {
                 return view('notes.share', compact('note'));
             } else {
                 abort(404, 'Page not Found');
             }
         } else {
             abort(404, 'Page not Found');
-        }        
+        }
     }
 
     public function RedirectNotPermission($note, $user_id){

@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'verifyToken'
     ];
 
     /**
@@ -26,4 +26,22 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public static function VerifyUserTokenByEmail($email, $token) {
+        $findUser = User::where([
+            'email' => $email,
+            'verifyToken' => $token
+        ])->first();
+        if ($findUser) {
+            $user = User::find($findUser->id);
+            $user->id = $findUser->id;
+            $user->verifyToken = NULL;
+            $user->status = 1;
+            $user->save();
+    
+            return $user;
+        } else {
+            return null;
+        }
+    }
 }

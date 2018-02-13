@@ -6,6 +6,11 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use Illuminate\Auth\Events\Registered;
+use Mail;
+use App\Mail\AccountVerifyEmail;
 
 class RegisterController extends Controller
 {
@@ -60,12 +65,40 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
-    protected function create(array $data)
-    {
-        return User::create([
+    protected function create(array $data) {
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'status' => 0,
+            'verifyToken' => Str::random(40),
         ]);
+        
+        $user = User::findOrFail($user->id);
+        $this->sendEmail($user);
+        return $user;
+    }
+
+    public function register(Request $request) {
+        $this->validator($request->all())->validate();
+
+        event(new Registered($user = $this->create($request->all())));
+
+        session()->flash('verifyaccount', 'Please, verify your e-mail to activate your account');
+        return redirect(route('login'));
+    }
+
+    public function sendEmail($user) {
+        Mail::to($user['email'])->send(new AccountVerifyEmail($user));
+    }
+
+    public function accountVerifyEmail($email, $token) {
+        $user = User::VerifyUserTokenByEmail($email, $token);
+        if ($user) {
+            $this->guard()->login($user);
+            return $this->registered($request, $user) ?: redirect($this->redirectPath());
+        } else {
+            return view('message', ['message' => 'User already activated or not found']);
+        }
     }
 }
