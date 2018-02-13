@@ -46,20 +46,25 @@
     </div>
     <div class="form-row">
         <div class="col-md-6 mb-3">
-            <label class="form-check-label">
-                <input class="form-check-input" type="checkbox" id="share" name="share" value="1" @if (old('share', $note->share)) checked @endif> Avaliable for others
-            </label>
+                <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="share" name="share" value="1" @if (old('share', $note->share)) checked @endif>
+                        <label class="form-check-label" for="share">
+                            Avaliable for others
+                        </label>
+                    </div>
         </div>
         <div class="col-md-6 mb-3">
             <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                <div class="input-group-addon">{{ config('app.url') }}/note/</div>
-                <input type="text" class="form-control @if ($errors->has('url')) is-invalid @endif" id="url" name="url" placeholder="Note URL" value="{{ old('url', $note->url) }}">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">{{ config('app.url') }}/note/</span>
+                </div>
+                <input type="text" class="form-control @if ($errors->has('url')) is-invalid @endif" id="url" name="url" placeholder="Note URL"  value="{{ old('url', $note->url) }}">
+                @if ($errors->has('url'))
+                    <span class="invalid-feedback">
+                        <strong>{{ $errors->first('url') }}</strong>
+                    </span>
+                @endif
             </div>
-            @if ($errors->has('url'))
-                <span class="invalid-feedback">
-                    <strong>{{ $errors->first('url') }}</strong>
-                </span>
-            @endif
         </div>
     </div>
     <button class="btn btn-primary" type="submit">Update Note</button>
