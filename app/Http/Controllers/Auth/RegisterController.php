@@ -73,7 +73,7 @@ class RegisterController extends Controller
             'status' => 0,
             'verifyToken' => Str::random(40),
         ]);
-        
+
         $user = User::findOrFail($user->id);
         $this->sendEmail($user);
         return $user;
@@ -96,7 +96,8 @@ class RegisterController extends Controller
         $user = User::VerifyUserTokenByEmail($email, $token);
         if ($user) {
             $this->guard()->login($user);
-            return $this->registered($request, $user) ?: redirect($this->redirectPath());
+            session()->flash('status', 'Thank you for registering at ' . env('APP_NAME'));
+            return redirect($this->redirectPath());
         } else {
             return view('message', ['message' => 'User already activated or not found']);
         }
