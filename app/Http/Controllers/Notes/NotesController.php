@@ -9,6 +9,7 @@ use App\Category;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
 use Validator;
+use Illuminate\Http\RedirectResponse;
 
 class NotesController extends Controller
 {
@@ -19,24 +20,33 @@ class NotesController extends Controller
     public function show($id) {
         $this->middleware('auth');
         $note = Note::find($id);
-        $this->RedirectNotPermission($note, Auth::id());
-        return view('notes.show', compact('note'));
+        if (($note) && ($note->user_id == Auth::id())) {
+            return view('notes.show', compact('note'));
+        } else {
+            return redirect('dashboard')->with('error', 'You don\'t have permission to access this note');
+        }
     }
 
     public function delete($id) {
         $this->middleware('auth');
         $note = Note::find($id);
-        $this->RedirectNotPermission($note, Auth::id());
-        return view('notes.delete', compact('note'));
+        if (($note) && ($note->user_id == Auth::id())) {
+            return view('notes.delete', compact('note'));
+        } else {
+            return redirect('dashboard')->with('error', 'You don\'t have permission to access this note');
+        }
     }
 
     public function destroy($id) {
         $this->middleware('auth');
         $note = Note::find($id);
-        $this->RedirectNotPermission($note, Auth::id());
-        $note->delete();
-        session()->flash('message', 'Your note has been deleted successfully');
-        return redirect('dashboard');
+        if (($note) && ($note->user_id == Auth::id())) {
+            $note->delete();
+            session()->flash('message', 'Your note has been deleted successfully');
+            return redirect('dashboard');
+        } else {
+            return redirect('dashboard')->with('error', 'You don\'t have permission to access this note');
+        }
     }
 
     public function new() {
@@ -48,9 +58,12 @@ class NotesController extends Controller
     public function edit($id) {
         $this->middleware('auth');
         $note = Note::find($id);
-        $this->RedirectNotPermission($note, Auth::id());
-        $categories = Category::all();
-        return view('notes.edit', compact('note', 'categories'));
+        if (($note) && ($note->user_id == Auth::id())) {
+            $categories = Category::all();
+            return view('notes.edit', compact('note', 'categories'));
+        } else {
+            return redirect('dashboard')->with('error', 'You don\'t have permission to access this note');
+        }
     }
 
     public function save(Request $request, $id = null) {
@@ -59,7 +72,9 @@ class NotesController extends Controller
             $note = new Note;
         } else {
             $note = Note::find($id);
-            $this->RedirectNotPermission($note, Auth::id());
+            if ((!$note) || ($note->user_id != Auth::id())) {
+                return redirect('dashboard')->with('error', 'You don\'t have permission to access this note');
+            }
         }
         $note->title = $request->title;
         $note->category_id = $request->category;
@@ -119,13 +134,6 @@ class NotesController extends Controller
             }
         } else {
             abort(404, 'Page not Found');
-        }
-    }
-
-    public function RedirectNotPermission($note, $user_id){
-        if ($note->user_id !== $user_id) {
-            session()->flash('error', 'You don\'t have permission to access this note');
-            return redirect('dashboard');
         }
     }
 }
