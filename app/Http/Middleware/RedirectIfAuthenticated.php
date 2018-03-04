@@ -18,9 +18,13 @@ class RedirectIfAuthenticated
     public function handle($request, Closure $next, $guard = null)
     {
         if (Auth::guard($guard)->check()) {
-            return redirect('/dashboard');
+            if ($request->is('account/verify/*')) {
+                Auth::logout();
+            } else {
+                return redirect('/dashboard');
+            }
         }
-
+        
         return $next($request);
     }
 }
